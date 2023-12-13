@@ -1,28 +1,28 @@
 apiVersion: v1
 data:
-  pyfile: "\ndef handler(input: dict, context: object) -> dict:\n  \n  resultado =
-    dict()\n\n  # Quantidade de nucleos da maquina\n  n_cpu = 16\n\n  # uso de memoria\n
-    \ memoria_cache = input['virtual_memory-cached']\n  memoria_buffer = input['virtual_memory-buffers']\n
-    \ memoria_total = input['virtual_memory-total']\n\n  #trafego de rede\n  bytes_enviados
-    = input['net_io_counters_eth0-bytes_sent']\n  bytes_recebidos = input['net_io_counters_eth0-bytes_recv']\n
-    \ \n  # Calculo da porcentagem de Rede, Memoria\n  percentagem_memoria =  ((memoria_cache
-    + memoria_buffer) * 100) / memoria_total\n  porcentagem_rede = (bytes_enviados)
-    / (bytes_enviados + bytes_recebidos) if bytes_enviados + bytes_recebidos > 0 else
-    0\n\n  #Calculo para cada CPU\n  porcentagem_total_cpu = {}\n  for i in range(n_cpu):\n
-    \   porcentagem_total_cpu[i] = input[f'cpu_percent-{i}']\n\n  # Media movel\n
-    \ def mean(total_utilization):\n    result = sum(total_utilization) / len(total_utilization)\n
-    \   return result\n  \n  media_movel = {}\n  for i in range(n_cpu):\n    utilization
-    =  context.env.get(f'utilization-cpu{i}', [])\n    utilization.append(porcentagem_total_cpu[i])\n
-    \   if len(utilization) > 60:\n      utilization.pop(0)\n    \n    media_movel[i]
-    = mean(utilization) \n    context.env[f'utilization-cpu{i}'] = utilization\n    \n\n
-    \ # retornado os resultados\n  resultado['use-memory-percent'] = percentagem_memoria\n
-    \ resultado['use-net-percent'] = porcentagem_rede\n\n  for i in range(n_cpu):\n
-    \   # Media movel por CPU\n    resultado[f'Avg_cpu-{i}'] = media_movel[i]\n  \n
-    \ return resultado"
+  pyfile: "import multiprocessing\n\ndef handler(input: dict, context: object) ->
+    dict:\n  \n  resultado = dict()\n\n  # Quantidade de nucleos da maquina\n  n_cpu
+    = multiprocessing.cpu_count()\n\n  # uso de memoria\n  memoria_cache = input['virtual_memory-cached']\n
+    \ memoria_buffer = input['virtual_memory-buffers']\n  memoria_total = input['virtual_memory-total']\n\n
+    \ #trafego de rede\n  bytes_enviados = input['net_io_counters_eth0-bytes_sent']\n
+    \ bytes_recebidos = input['net_io_counters_eth0-bytes_recv']\n  \n  # Calculo
+    da porcentagem de Rede, Memoria\n  percentagem_memoria =  ((memoria_cache + memoria_buffer)
+    * 100) / memoria_total\n  porcentagem_rede = (bytes_enviados) / (bytes_enviados
+    + bytes_recebidos) if bytes_enviados + bytes_recebidos > 0 else 0\n\n  #Calculo
+    para cada CPU\n  porcentagem_total_cpu = {}\n  for i in range(n_cpu):\n    porcentagem_total_cpu[i]
+    = input[f'cpu_percent-{i}']\n\n  # Media movel\n  def mean(total_utilization):\n
+    \   result = sum(total_utilization) / len(total_utilization)\n    return result\n
+    \ \n  media_movel = {}\n  for i in range(n_cpu):\n    utilization =  context.env.get(f'utilization-cpu{i}',
+    [])\n    utilization.append(porcentagem_total_cpu[i])\n    if len(utilization)
+    > 60:\n      utilization.pop(0)\n    \n    media_movel[i] = mean(utilization)
+    \n    context.env[f'utilization-cpu{i}'] = utilization\n    \n\n  # retornado
+    os resultados\n  resultado['use-memory-percent'] = percentagem_memoria\n  resultado['use-net-percent']
+    = porcentagem_rede\n\n  for i in range(n_cpu):\n    # Media movel por CPU\n    resultado[f'Avg_cpu-{i}']
+    = media_movel[i]\n  \n  return resultado"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-12-13T17:11:17Z"
+  creationTimestamp: "2023-12-13T18:33:45Z"
   name: pyfile
   namespace: lucassacramento
-  resourceVersion: "4509695"
-  uid: fb0aa0c7-92fd-4c92-bda1-ac7e98a07c9c
+  resourceVersion: "4518933"
+  uid: 9c08c38f-d4c8-4d0c-a8d2-5496baff1c6f

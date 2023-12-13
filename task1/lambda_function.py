@@ -1,10 +1,11 @@
+import multiprocessing
 
 def handler(input: dict, context: object) -> dict:
   
   resultado = dict()
 
   # Quantidade de nucleos da maquina
-  n_cpu = 16
+  n_cpu = multiprocessing.cpu_count()
 
   # uso de memoria
   memoria_cache = input['virtual_memory-cached']

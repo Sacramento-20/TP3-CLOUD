@@ -29,5 +29,5 @@ kubectl logs <name pod>
 
 Deletando pod.
 ```
-kubectl delete deploy {deployment/name}
+kubectl delete deploy serverless-redis
 ```
