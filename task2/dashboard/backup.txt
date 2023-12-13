@@ -7,27 +7,8 @@ import redis
 import time
 import multiprocessing
 
-
-def load_redis():
-  n_cpu = multiprocessing.cpu_count()
-  # Conectar-se ao servidor Redis
-  redis_client = redis.Redis(host='192.168.121.66', port=6379, db=0)
-  data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
-    
-  # Metricas do desempenho da maquina
-  redis_data = json.loads(data)
-
-  percentagem_memoria = redis_data['use-memory-percent']
-  percentagem_rede = redis_data['use-net-percent']
-
-  print(percentagem_rede)
-  print(percentagem_memoria)
-
-  media_movel = {}
-  for i in range(n_cpu):
-    media_movel[i] = redis_data[f'Avg_cpu-{i}']
-
-  return percentagem_memoria, percentagem_rede, media_movel 
+# Conectar-se ao servidor Redis
+redis_client = redis.Redis(host='192.168.121.66', port=6379, db=0)
 
 # Criar a aplicação Dash
 app = Dash(__name__)
@@ -63,8 +44,23 @@ app.layout = html.Div([
 )
 def update_graphs(n):
       # Obter dados do Redis
-      percentagem_memoria, percentagem_rede,  media_movel  = load_redis()
-     
+      n_cpu = multiprocessing.cpu_count()
+      # data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
+      
+      # Metricas do desempenho da maquina
+      redis_data = json.loads(redis_client.get("lucassacramento-proj3-output").decode('utf-8'))
+
+      percentagem_memoria = redis_data['use-memory-percent']
+      percentagem_rede = redis_data['use-net-percent']
+
+      print(porcentagem_rede)
+      print(porcentagem_memoria)
+
+      media_movel = {}
+      for i in range(n_cpu):
+        media_movel[i] = redis_data[f'Avg_cpu-{i}']
+
+        
       # Criar gráfico de uso de CPU
       cpu_graph = go.Figure()
       cpu_graph.add_trace(go.Scatter(
