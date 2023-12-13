@@ -61,8 +61,8 @@ def update_graphs(n):
       # Criar gráfico de uso de CPU
       cpu_graph = go.Figure()
       cpu_graph.add_trace(go.Scatter(
-          x=list(data.keys())[2:],
-          y=list(list(media_movel.values())),
+          x=list(media_movel.keys()),
+          y=list(media_movel.values()),
           mode='lines+markers',
           name='Uso de CPU',
       ))
@@ -83,7 +83,7 @@ def update_graphs(n):
           }
         }]
         # 
-        },
+      },
 
       #Criando gráfico de uso de Rede
       net_graph = {
@@ -100,9 +100,9 @@ def update_graphs(n):
           }
         }]
         # 
-      },
+      }
     
-    return cpu_graph, memory_graph, net_graph
+      return cpu_graph, memory_graph, net_graph
 
 
 
