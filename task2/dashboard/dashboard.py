@@ -53,6 +53,9 @@ def update_graphs(n):
       percentagem_memoria = redis_data['use-memory-percent']
       percentagem_rede = redis_data['use-net-percent']
 
+      print(porcentagem_rede)
+      print(porcentagem_memoria)
+
       media_movel = {}
       for i in range(n_cpu):
         media_movel[i] = redis_data[f'Avg_cpu-{i}']
@@ -108,3 +111,4 @@ def update_graphs(n):
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=32194)
+    
