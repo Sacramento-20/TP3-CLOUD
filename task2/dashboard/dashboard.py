@@ -8,7 +8,6 @@ import multiprocessing
 
 # Conectar-se ao servidor Redis
 redis_client = redis.Redis(host='192.168.121.66', port=6379, db=0)
-data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
 
 # Criar a aplicação Dash
 app = Dash(__name__)
@@ -44,6 +43,7 @@ app.layout = html.Div([
 )
 def update_graphs(n):
       # Obter dados do Redis
+      data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
       
       # Metricas do desempenho da maquina
       n_cpu = multiprocessing.cpu_count()
