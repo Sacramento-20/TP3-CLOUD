@@ -32,7 +32,7 @@ app = Dash(__name__)
 # Layout da aplicação
 app.layout = html.Div([
     # Uso de CPU, Memória e Rede
-    html.H1("title", style={'text-align': 'center', 'color': 'black', 'font-family': 'Arial', 'padding': '30px'}),
+    html.H1("DashBoard - Kael & Lucas", style={'text-align': 'center', 'color': 'black', 'font-family': 'Arial', 'padding': '30px'}),
     html.Div([
       html.H2("Média Móvel da CPU"),
       dcc.Graph(id='Live-update-graph'),
