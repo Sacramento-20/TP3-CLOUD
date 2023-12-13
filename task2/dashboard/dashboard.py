@@ -1,5 +1,8 @@
 import json
 from dash import html, Dash, dcc
+from dash.dependencies import Input, Output
+import plotly.graph_objs as go
+
 import redis
 import time
 import multiprocessing
@@ -13,9 +16,8 @@ app = Dash(__name__)
 
 # Layout da aplicação
 app.layout = html.Div([
-    html.H1("Monitoramento de Recursos do Sistema"),
-    
     # Uso de CPU, Memória e Rede
+    html.H1("Monitoramento de Recursos do Sistema"),
     html.Div([
       html.H2("Média Móvel da CPU"),
       dcc.Graph(id='Live-update-graph'),
@@ -23,7 +25,7 @@ app.layout = html.Div([
       dcc.Graph(id='memory-graph'),
       html.H3("Uso de Rede"),
       dcc.Graph(id='net-graph')
-    ])
+    ]),
     dcc.Interval(
         id='interval-resources',
         interval=1*1000,  # Atualiza a cada 1 segundos
@@ -100,9 +102,9 @@ def update_graphs(n):
         # 
       },
     
-    return memory_graph, net_graph
+    return cpu_graph, memory_graph, net_graph
 
 
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0' port=32194)
+    app.run_server(host='0.0.0.0', port=32194)
