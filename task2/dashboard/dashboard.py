@@ -7,7 +7,7 @@ import time
 import multiprocessing
 
 # Conectar-se ao servidor Redis
-redis_client = redis.Redis(host='192.168.121.86', port=6379, db=0)
+redis_client = redis.Redis(host='192.168.121.66', port=6379, db=0)
 data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
 
 # Criar a aplicação Dash
