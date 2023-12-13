@@ -1,6 +1,5 @@
 import json
-from dash import *
-import plotly.graph_objs as go
+from dash import html, Dash, dcc
 import redis
 import time
 import multiprocessing
@@ -16,7 +15,6 @@ app = Dash(__name__)
 app.layout = html.Div([
     html.H1("Monitoramento de Recursos do Sistema"),
     
-
     # Uso de CPU, Memória e Rede
     html.Div([
       html.H2("Média Móvel da CPU"),

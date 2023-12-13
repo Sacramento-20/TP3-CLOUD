@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dashboard_tp
+  name: dashboard
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dashboard_tp
+      app: dashboard
   template:
     metadata:
       labels:
-        app: dashboard_tp
+        app: dashboard
     spec:
       containers:
       - name: dash 
