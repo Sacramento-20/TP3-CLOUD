@@ -95,7 +95,8 @@ def update_graphs(n):
           'type': 'indicator',
           'mode': "gauge+number",
           'title': {
-            'text': "Uso de Memoria(%)"
+            'text': "Uso de Memoria(%)",
+            'font': {'size': 62}
           },
           'gauge':{
             'axis': {'range': [0, 100]},
@@ -118,7 +119,8 @@ def update_graphs(n):
           'type': 'indicator',
           'mode': "gauge+number",
           'title': {
-            'text': "Uso de Rede(%)"
+            'text': "Uso de Rede(%)",
+            'font': {'size': 62}
           },
           'gauge':{
             'axis': {'range': [0, 100]},
