@@ -70,7 +70,7 @@ def update_graphs(n):
       cpu_graph.add_trace(go.Scatter(
           x=list(media_movel.keys()),
           y=list(media_movel.values()),
-          mode='markers',
+          mode='lines+markers',
           marker=dict(
             size=10,
             color='blue',  # Cor dos marcadores
@@ -79,7 +79,13 @@ def update_graphs(n):
           ),
           name='Uso de CPU',
       ))
-      cpu_graph.update_layout(title_text='Uso de CPU Médio por Núcleo', showlegend=True,template='plotly_dark')
+      cpu_graph.update_layout(
+        title_text='Uso de CPU Médio por Núcleo',
+        xaxis_title='Tempo',
+        yaxis_title='Porcentagem (%)', 
+        showlegend=True,
+        template='plotly_dark'
+      )
 
 
       # Criar gráfico de uso de memória
