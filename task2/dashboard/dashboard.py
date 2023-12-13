@@ -84,7 +84,7 @@ def update_graphs(n):
             'axis': {'range': [0, 100]},
             'bar': {'color': 'green'},
           }
-        }]
+        }],
         'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red'}
       }
 
@@ -101,7 +101,7 @@ def update_graphs(n):
             'axis': {'range': [0, 100]},
             'bar': {'color': 'green'},
           }
-        }]
+        }],
         'layout': {'title': 'Uso de rede', 'height': 300, 'color': 'red'}
       }
     
