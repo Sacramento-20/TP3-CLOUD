@@ -1,4 +1,5 @@
 import json
+import dash
 from dash import html, Dash, dcc
 from dash.dependencies import Input, Output
 import plotly.graph_objs as go
@@ -43,11 +44,11 @@ app.layout = html.Div([
 )
 def update_graphs(n):
       # Obter dados do Redis
-      data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
+      n_cpu = multiprocessing.cpu_count()
+      # data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
       
       # Metricas do desempenho da maquina
-      n_cpu = multiprocessing.cpu_count()
-      redis_data = json.loads(data)
+      redis_data = json.loads(redis_client.get("lucassacramento-proj3-output").decode('utf-8'))
 
       percentagem_memoria = redis_data['use-memory-percent']
       percentagem_rede = redis_data['use-net-percent']
