@@ -18,6 +18,7 @@ def handler(input: dict, context: object) -> dict:
   
   # Calculo da porcentagem de Rede, Memoria
   percentagem_memoria =  ((memoria_cache + memoria_buffer) * 100) / memoria_total
+  # Documentar o tipo de calculo feito para a rede
   porcentagem_rede = (bytes_enviados * 100) / (bytes_enviados + bytes_recebidos) if bytes_enviados + bytes_recebidos > 0 else 0
 
   #Calculo para cada CPU

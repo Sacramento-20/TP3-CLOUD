@@ -3,8 +3,8 @@ data:
   REDIS_OUTPUT_KEY: lucassacramento-proj3-output
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-12-13T18:33:52Z"
+  creationTimestamp: "2023-12-13T21:33:08Z"
   name: outputkey
   namespace: lucassacramento
-  resourceVersion: "4518946"
-  uid: 9c325606-c5ed-4b4e-9fb2-22b08cdba3ee
+  resourceVersion: "4538552"
+  uid: bf5f5e2d-9a5c-4916-bae6-911865f1fe43

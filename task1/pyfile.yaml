@@ -7,7 +7,7 @@ data:
     \ #trafego de rede\n  bytes_enviados = input['net_io_counters_eth0-bytes_sent']\n
     \ bytes_recebidos = input['net_io_counters_eth0-bytes_recv']\n  \n  # Calculo
     da porcentagem de Rede, Memoria\n  percentagem_memoria =  ((memoria_cache + memoria_buffer)
-    * 100) / memoria_total\n  porcentagem_rede = (bytes_enviados) / (bytes_enviados
+    * 100) / memoria_total\n  porcentagem_rede = (bytes_enviados * 100) / (bytes_enviados
     + bytes_recebidos) if bytes_enviados + bytes_recebidos > 0 else 0\n\n  #Calculo
     para cada CPU\n  porcentagem_total_cpu = {}\n  for i in range(n_cpu):\n    porcentagem_total_cpu[i]
     = input[f'cpu_percent-{i}']\n\n  # Media movel\n  def mean(total_utilization):\n
@@ -21,8 +21,8 @@ data:
     = media_movel[i]\n  \n  return resultado"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-12-13T18:33:45Z"
+  creationTimestamp: "2023-12-13T21:32:58Z"
   name: pyfile
   namespace: lucassacramento
-  resourceVersion: "4518933"
-  uid: 9c08c38f-d4c8-4d0c-a8d2-5496baff1c6f
+  resourceVersion: "4538531"
+  uid: bd4fae36-9aee-4328-8db7-123221aadd18
