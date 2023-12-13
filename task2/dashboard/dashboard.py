@@ -75,14 +75,14 @@ def update_graphs(n):
           'type': 'indicator',
           'mode': "gauge+number",
           'title': {
-            'text': "Uso de Memória (%)"
+            'text': "Uso de Memoria(%)"
           },
           'gauge':{
             'axis': {'range': [0, 100]},
-            'bar': {'color': 'blue'},
+            'bar': {'color': 'green'},
           }
         }]
-        'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red'}
+        # 'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red'}
       },
 
       #Criando gráfico de uso de Rede
@@ -99,7 +99,7 @@ def update_graphs(n):
             'bar': {'color': 'green'},
           }
         }]
-        # 
+        # 'layout': {'title': 'Uso de rede', 'height': 300, 'color': 'red'}
       }
     
       return cpu_graph, memory_graph, net_graph
