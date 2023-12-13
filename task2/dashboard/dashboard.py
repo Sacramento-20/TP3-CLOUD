@@ -74,7 +74,7 @@ def update_graphs(n):
       # Criar gráfico de uso de memória
       memory_graph = {
         'data': [{
-          'value': [percentagem_memoria],
+          'value': percentagem_memoria,
           'type': 'indicator',
           'mode': "gauge+number",
           'title': {
@@ -85,13 +85,13 @@ def update_graphs(n):
             'bar': {'color': 'green'},
           }
         }]
-        # 'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red'}
-      },
+        'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red'}
+      }
 
       #Criando gráfico de uso de Rede
       net_graph = {
         'data': [{
-          'value': [percentagem_rede],
+          'value': percentagem_rede,
           'type': 'indicator',
           'mode': "gauge+number",
           'title': {
@@ -102,7 +102,7 @@ def update_graphs(n):
             'bar': {'color': 'green'},
           }
         }]
-        # 'layout': {'title': 'Uso de rede', 'height': 300, 'color': 'red'}
+        'layout': {'title': 'Uso de rede', 'height': 300, 'color': 'red'}
       }
     
       return cpu_graph, memory_graph, net_graph
