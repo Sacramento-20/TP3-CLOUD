@@ -2,14 +2,13 @@ import json
 from dash import html, Dash, dcc
 from dash.dependencies import Input, Output
 import plotly.graph_objs as go
-
 import redis
 import time
 import multiprocessing
 
 # Conectar-se ao servidor Redis
 redis_client = redis.Redis(host='192.168.121.86', port=6379, db=0)
-data = connection_redis.get("lucassacramento-proj3-output").decode('utf-8')
+data = redis_client.get("lucassacramento-proj3-output").decode('utf-8')
 
 # Criar a aplicação Dash
 app = Dash(__name__)
