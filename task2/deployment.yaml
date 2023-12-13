@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      containers:
+      - name: dash 
+        image: quay.io/sacramento-20/playlists-recommender-system
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 32194
