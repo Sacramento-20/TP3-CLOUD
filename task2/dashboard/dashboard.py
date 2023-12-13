@@ -20,9 +20,6 @@ def load_redis():
   percentagem_memoria = redis_data['use-memory-percent']
   percentagem_rede = redis_data['use-net-percent']
 
-  print(percentagem_rede)
-  print(percentagem_memoria)
-
   media_movel = {}
   for i in range(n_cpu):
     media_movel[i] = redis_data[f'Avg_cpu-{i}']
@@ -64,7 +61,9 @@ app.layout = html.Div([
 def update_graphs(n):
       # Obter dados do Redis
       percentagem_memoria, percentagem_rede,  media_movel  = load_redis()
-     
+      print(percentagem_rede)
+      print(percentagem_memoria)
+
       # Criar gráfico de uso de CPU
       cpu_graph = go.Figure()
       cpu_graph.add_trace(go.Scatter(
