@@ -32,7 +32,7 @@ app = Dash(__name__)
 # Layout da aplicação
 app.layout = html.Div([
     # Uso de CPU, Memória e Rede
-    html.H1("Monitoramento de Recursos do Sistema"),
+    html.H1("title", style={'text-align': 'center', 'color': 'black', 'font-family': 'Arial', 'padding': '30px'}),
     html.Div([
       html.H2("Média Móvel da CPU"),
       dcc.Graph(id='Live-update-graph'),
@@ -67,10 +67,9 @@ def update_graphs(n):
       # Criar gráfico de uso de CPU
       cpu_graph = go.Figure()
 
-      cpu_graph.add_trace(go.Scatter(
+      cpu_graph.add_trace(go.Bar(
           x=list(media_movel.keys()),
           y=list(media_movel.values()),
-          mode='lines+markers',
           marker=dict(
             size=10,
             color='blue',  # Cor dos marcadores
@@ -79,10 +78,12 @@ def update_graphs(n):
           ),
           name='Uso de CPU',
       ))
+
       cpu_graph.update_layout(
         title_text='Uso de CPU Médio por Núcleo',
         xaxis_title='Tempo',
         yaxis_title='Porcentagem (%)', 
+        yaxis=dict(range=[0,100]),
         showlegend=True,
         template='plotly_dark'
       )
@@ -99,10 +100,16 @@ def update_graphs(n):
           },
           'gauge':{
             'axis': {'range': [0, 100]},
-            'bar': {'color': 'green'},
+            'bar': {'color': 'darkblue'},
+            'steps': [
+                {'range':[0,25], 'color': 'green'},
+                {'range':[25,50], 'color': 'yellow'},
+                {'range':[50,75], 'color': 'orange'},
+                {'range':[75,100], 'color': 'red'},
+                ]
           }
         }],
-        'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red'}
+        'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red', 'paper_bgcolor' = 'lavander'}
       }
 
       #Criando gráfico de uso de Rede
@@ -116,10 +123,16 @@ def update_graphs(n):
           },
           'gauge':{
             'axis': {'range': [0, 100]},
-            'bar': {'color': 'green'},
-          }
+            'bar': {'color': 'darkblue'},
+            'steps': [
+                {'range':[0,25], 'color': 'green'},
+                {'range':[25,50], 'color': 'yellow'},
+                {'range':[50,75], 'color': 'orange'},
+                {'range':[75,100], 'color': 'red'},
+                ]
+           }
         }],
-        'layout': {'title': 'Uso de rede', 'height': 300, 'color': 'red'}
+        'layout': {'title': 'Uso de memória', 'height': 300, 'color': 'red', 'paper_bgcolor' = 'lavander'}
       }
     
       return cpu_graph, memory_graph, net_graph
