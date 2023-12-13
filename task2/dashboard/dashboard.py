@@ -71,7 +71,6 @@ def update_graphs(n):
           x=list(media_movel.keys()),
           y=list(media_movel.values()),
           marker=dict(
-            size=10,
             color='blue',  # Cor dos marcadores
             opacity=0.8,  # Opacidade dos marcadores
             line=dict(width=0.5, color='black')  # Borda dos marcadores
