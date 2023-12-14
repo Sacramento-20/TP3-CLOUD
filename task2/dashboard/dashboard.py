@@ -89,16 +89,11 @@ def update_graphs(n):
 
 
       # Criar gráfico de uso de memória
-      memory_graph = {
-        'data': [{
-          'value': percentagem_memoria,
-          'type': 'indicator',
-          'mode': "gauge+number",
-          'title': {
-            'text': "Uso de Memoria(%)",
-            'font': {'size': 62}
-          },
-          'gauge':{
+      memory_graph = go.Figure(go.Indicator(
+        mode = "gauge+number",
+        title = {'text': "Uso de Memoria(%)", 'font': {'size': 62}},
+        value = percentagem_memoria,
+        gauge = {
             'axis': {'range': [0, 100]},
             'bar': {'color': 'darkblue'},
             'steps': [
@@ -107,10 +102,9 @@ def update_graphs(n):
                 {'range':[50,75], 'color': 'orange'},
                 {'range':[75,100], 'color': 'red'},
                 ]
-          }
-        }],
-        'layout': {'height': 500, 'color': 'red', 'paper_bgcolor': 'lavander', 'plot_bgcolor': 'lavander'}
-      }
+            }
+       ))
+      memory_graph.update_layout(paper_bgcolor="black", font={'color': "darkblue", 'family': "Arial"})
 
       #Criando gráfico de uso de Rede
       net_graph = {
