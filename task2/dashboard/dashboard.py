@@ -109,7 +109,7 @@ def update_graphs(n):
                 ]
           }
         }],
-        'layout': {'title': 'Uso de memória', 'height': 500, 'color': 'red', 'paper_bgcolor': 'lavander', 'plot_bgcolor': 'lavander'}
+        'layout': {'height': 500, 'color': 'red', 'paper_bgcolor': 'lavander', 'plot_bgcolor': 'lavander'}
       }
 
       #Criando gráfico de uso de Rede
@@ -133,7 +133,7 @@ def update_graphs(n):
                 ]
            }
         }],
-        'layout': {'title': 'Uso de memória', 'height': 500, 'color': 'red', 'paper_bgcolor': 'lavander', 'plot_bgcolor': 'lavander'}
+        'layout': {'height': 500, 'color': 'red', 'paper_bgcolor': 'lavander', 'plot_bgcolor': 'lavander'}
       }
     
       return cpu_graph, memory_graph, net_graph
