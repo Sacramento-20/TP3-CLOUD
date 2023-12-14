@@ -61,8 +61,6 @@ app.layout = html.Div([
 def update_graphs(n):
       # Obter dados do Redis
       percentagem_memoria, percentagem_rede,  media_movel  = load_redis()
-      print(percentagem_rede)
-      print(percentagem_memoria)
 
       # Criar gráfico de uso de CPU
       cpu_graph = go.Figure()
@@ -109,7 +107,7 @@ def update_graphs(n):
       #Criando gráfico de uso de Rede
       net_graph = go.Figure(go.Indicator(
         mode = "gauge+number",
-        title = {'text': "Uso de Rede(%)", 'font': {'size': 62}},
+        title = {'text': "Rede Outgoing/Total(%)", 'font': {'size': 62}},
         value = percentagem_rede,
         gauge = {
             'axis': {'range': [0, 100]},
