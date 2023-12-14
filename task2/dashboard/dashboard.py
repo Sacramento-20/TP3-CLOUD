@@ -84,7 +84,7 @@ def update_graphs(n):
         yaxis_title='Porcentagem (%)', 
         yaxis=dict(range=[0,100]),
         showlegend=True,
-        template='plotly_dark'
+        paper_bgcolor="lavender"
       )
 
 
