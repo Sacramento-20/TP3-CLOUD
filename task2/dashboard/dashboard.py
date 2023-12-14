@@ -104,7 +104,7 @@ def update_graphs(n):
                 ]
             }
        ))
-      memory_graph.update_layout(paper_bgcolor="lavander", font={'color': "darkblue", 'family': "Arial"})
+      memory_graph.update_layout(paper_bgcolor="lavender", font={'color': "darkblue", 'family': "Arial"})
 
       #Criando gráfico de uso de Rede
       net_graph = go.Figure(go.Indicator(
@@ -122,7 +122,7 @@ def update_graphs(n):
                 ]
             }
        ))
-      net_graph.update_layout(paper_bgcolor="lavander", font={'color': "darkblue", 'family': "Arial"})
+      net_graph.update_layout(paper_bgcolor="lavender", font={'color': "darkblue", 'family': "Arial"})
 
       return cpu_graph, memory_graph, net_graph
 
